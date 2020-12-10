@@ -86,7 +86,7 @@ public class Sender {
 					socket.receive(ackPack);
 
 					Ack ack = (Ack) Serializer.toObject(ackPack.getData());
-					if (ack.getFrame() < lastFrameNum) {
+					if (ack.getFrame() <= lastFrameNum) {
 						System.out.println("Received ACK for frame " + ack.getFrame());
 					}
 					if (ack.getFrame() == lastFrameNum) {
