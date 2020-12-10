@@ -10,11 +10,11 @@ public class Sender {
 
 	public static final int FRAME_SIZE = 4;
 
-	public static final double LOSS = 0.1;
+	public static final double LOSS = 0.0;
 
-	public static final int WINDOW_SIZE = 2;
+	public static final int WINDOW_SIZE = 3;
 
-	public static final int TIMEOUT = 30;
+	public static final int TIMEOUT = 120;
 
 	public static final String QUIT = "Quit";
 
@@ -86,9 +86,9 @@ public class Sender {
 					socket.receive(ackPack);
 
 					Ack ack = (Ack) Serializer.toObject(ackPack.getData());
-
-					System.out.println("Received ACK for frame " + ack.getFrame());
-
+					if (ack.getFrame() < lastFrameNum) {
+						System.out.println("Received ACK for frame " + ack.getFrame());
+					}
 					if (ack.getFrame() == lastFrameNum) {
 						break;
 					}

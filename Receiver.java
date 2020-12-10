@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Receiver {
 
-	public static final double LOSS = 0.1;
+	public static final double LOSS = 0.0;
 
 	public static final String HOST = "localhost";
 
